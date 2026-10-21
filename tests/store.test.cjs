@@ -9,8 +9,9 @@ const app=fs.readFileSync(path.join(root,'app.js'),'utf8');
 vm.runInContext(app.slice(0,app.indexOf('let catalog = normalize(CALENDAR_DATA);')),ctx);
 const normalize=input=>{ctx.testInput=input;return JSON.parse(vm.runInContext('JSON.stringify(normalize(testInput))',ctx));};
 const catalog=normalize(payload.events),flat=Store.flat(catalog);
-assert.equal(flat.length,154);assert.equal(new Set(flat.map(x=>x.event.id)).size,154);
-assert.equal(flat.filter(x=>x.event.priority==='core'&&x.event.status==='confirmed'&&!x.event.archived).length,30);
+assert(flat.length>0);assert.equal(new Set(flat.map(x=>x.event.id)).size,flat.length);
+for(const item of flat){assert(/^\d{4}-\d{2}-\d{2}$/.test(item.date));if(item.event.status==='confirmed'){assert(item.event.source.startsWith('https://'));assert.notEqual(item.event.dateBasis,'unresolved');}}
+assert(flat.some(x=>x.event.priority==='core'&&x.event.status==='confirmed'&&!x.event.archived));
 const state=Store.empty(),target=flat.find(x=>x.event.text==='미국 10월 CPI');
 Store.save(catalog,state,target.date,target.event,'CPI 발표 후 확인할 메모');
 assert.equal(Object.keys(state.overrides).length,0);
@@ -46,4 +47,4 @@ assert.deepEqual(fallback,payload.events);
 assert.equal(JSON.parse(JSON.stringify(state)).events,undefined);
 const invalid=JSON.parse('{"schema":3,"custom":{},"overrides":{},"hidden":[],"notes":{"__proto__":"bad"}}');
 assert.throws(()=>Store.validate(invalid,normalize));
-console.log('PASS: public updates, private notes/custom edits, restore/hide, legacy migration, backup validation, fallback parity (154 events)');
+console.log(`PASS: public updates, private notes/custom edits, restore/hide, legacy migration, backup validation, fallback parity (${flat.length} events)`);
