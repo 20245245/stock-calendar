@@ -1,5 +1,5 @@
 // Generated from data/calendar.json; do not edit by hand.
-const CALENDAR_CATALOG_REVISION = "2026-10-22.1";
+const CALENDAR_CATALOG_REVISION = "2026-10-26.1";
 const CALENDAR_DATA = [
   {
     "date": "2026-10-19",
@@ -637,23 +637,6 @@ const CALENDAR_DATA = [
         "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
       },
       {
-        "id": "oct2026-image-23-earnings-04",
-        "type": "earnings",
-        "text": "미국 인텔 실적 발표",
-        "time": "",
-        "note": "출처: 사용자 제공 2026년 10월 캘린더 이미지. 하단 표기: Bloomberg, 전자공시, 인포맥스, KB증권. 한국시간 기준·일정변경 가능. 이미지 전사이며 공식 일정과 별도 대조하지 않았습니다.\n원문 실적 기업명을 개별 일정으로 분리했습니다. 발표 시각은 원문에 없습니다.",
-        "source": "",
-        "status": "unconfirmed",
-        "originalDate": "2026-10-23",
-        "originalText": "미국 인텔 실적 발표",
-        "dateBasis": "unresolved",
-        "priority": "core",
-        "archived": false,
-        "updatedAt": "2026-10-22",
-        "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
-        "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
-      },
-      {
         "id": "oct2026-image-23-earnings-07",
         "type": "earnings",
         "text": "미국 제너럴다이내믹스 실적 발표",
@@ -1007,6 +990,57 @@ const CALENDAR_DATA = [
         "updatedAt": "2026-10-22",
         "priorityReason": "보유·관심 종목 또는 관련 업종을 볼 때 선택하는 후보 일정",
         "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
+      },
+      {
+        "id": "superweek-sk하이닉스-2026-10",
+        "originalDate": "2026-10-28",
+        "originalText": "SK하이닉스 실적발표·콘퍼런스콜",
+        "type": "earnings",
+        "text": "SK하이닉스 실적발표·콘퍼런스콜",
+        "time": "09:00",
+        "source": "https://news.skhynix.com/en/q3-2026-earnings-conference-call-invitation/",
+        "status": "confirmed",
+        "dateBasis": "KST",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "",
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 공식 공지 확인. 실적 보도자료는 오전 9시 이전, 표시 시각은 한국시간 콜 시작."
+      },
+      {
+        "id": "superweek-삼성전기-2026-10",
+        "originalDate": "2026-10-28",
+        "originalText": "삼성전기 실적발표",
+        "type": "earnings",
+        "text": "삼성전기 실적발표",
+        "time": "",
+        "source": "",
+        "status": "unconfirmed",
+        "dateBasis": "unresolved",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "사용자 제공 일정. 공식 발표일·시각 확인 필요",
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 원문 10/28. 공식 공시 원문 재확인 필요."
+      },
+      {
+        "id": "superweek-주주환원-발표-2026-10",
+        "originalDate": "2026-10-28",
+        "originalText": "SK하이닉스·삼성전자 주주환원 발표 예상 (10/28~10/29)",
+        "type": "event",
+        "text": "SK하이닉스·삼성전자 주주환원 발표 예상 (10/28~10/29)",
+        "time": "",
+        "source": "",
+        "status": "unconfirmed",
+        "dateBasis": "unresolved",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "사용자 제공 일정. 공식 발표일·시각 확인 필요",
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 사용자 제공 예상 기간. 시작일 10/28에 한 건으로 등록. 두 회사의 발표 여부·날짜 모두 미확정."
       }
     ]
   },
@@ -1035,7 +1069,7 @@ const CALENDAR_DATA = [
         "type": "earnings",
         "text": "마이크로소프트 실적·콘퍼런스콜",
         "time": "06:30",
-        "note": "2026-10-22 공식 자료 대조. 원문: 2026-10-29 / 미국 마이크로소프트 실적 발표.\n현지 2026-10-28T14:30 (America/Los_Angeles) → 한국 2026-10-29 06:30. 실적은 현지 장 마감 후 발표. 표시 시각은 콘퍼런스콜 시작입니다.",
+        "note": "2026-10-22 공식 자료 대조. 원문: 2026-10-29 / 미국 마이크로소프트 실적 발표.\n현지 2026-10-28T14:30 (America/Los_Angeles) → 한국 2026-10-29 06:30. 실적은 현지 장 마감 후 발표. 표시 시각은 콘퍼런스콜 시작입니다.\n2026-10-26 사용자 실적발표 슈퍼위크 요청과 일치. 기존 확인 일정 유지.",
         "source": "https://news.microsoft.com/source/2026/10/07/microsoft-announces-quarterly-earnings-release-date-69/",
         "status": "confirmed",
         "originalDate": "2026-10-29",
@@ -1043,7 +1077,7 @@ const CALENDAR_DATA = [
         "dateBasis": "KST",
         "priority": "core",
         "archived": false,
-        "updatedAt": "2026-10-22",
+        "updatedAt": "2026-10-26",
         "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
         "reviewReason": ""
       },
@@ -1201,23 +1235,6 @@ const CALENDAR_DATA = [
         "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
       },
       {
-        "id": "oct2026-image-29-earnings-05",
-        "type": "earnings",
-        "text": "미국 알파벳 실적 발표",
-        "time": "",
-        "note": "출처: 사용자 제공 2026년 10월 캘린더 이미지. 하단 표기: Bloomberg, 전자공시, 인포맥스, KB증권. 한국시간 기준·일정변경 가능. 이미지 전사이며 공식 일정과 별도 대조하지 않았습니다.\n원문 실적 기업명을 개별 일정으로 분리했습니다. 발표 시각은 원문에 없습니다.",
-        "source": "",
-        "status": "unconfirmed",
-        "originalDate": "2026-10-29",
-        "originalText": "미국 알파벳 실적 발표",
-        "dateBasis": "unresolved",
-        "priority": "core",
-        "archived": false,
-        "updatedAt": "2026-10-22",
-        "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
-        "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
-      },
-      {
         "id": "oct2026-image-29-earnings-08",
         "type": "earnings",
         "text": "미국 일라이릴리 실적 발표",
@@ -1301,6 +1318,74 @@ const CALENDAR_DATA = [
         "updatedAt": "2026-10-22",
         "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
         "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
+      },
+      {
+        "id": "oct2026-image-29-earnings-05",
+        "type": "earnings",
+        "text": "알파벳 실적발표",
+        "time": "",
+        "note": "출처: 사용자 제공 2026년 10월 캘린더 이미지. 하단 표기: Bloomberg, 전자공시, 인포맥스, KB증권. 한국시간 기준·일정변경 가능. 이미지 전사이며 공식 일정과 별도 대조하지 않았습니다.\n원문 실적 기업명을 개별 일정으로 분리했습니다. 발표 시각은 원문에 없습니다.\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 원문 10/29. 공식 IR 본문에서 날짜·시각을 확인하지 못해 확인 필요 유지.",
+        "source": "",
+        "status": "unconfirmed",
+        "originalDate": "2026-10-29",
+        "originalText": "미국 알파벳 실적 발표",
+        "dateBasis": "unresolved",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "사용자 제공 일정. 공식 발표일·시각 확인 필요"
+      },
+      {
+        "id": "superweek-삼성전자-실적-2026-10",
+        "originalDate": "2026-10-29",
+        "originalText": "삼성전자 실적발표·콘퍼런스콜",
+        "type": "earnings",
+        "text": "삼성전자 실적발표·콘퍼런스콜",
+        "time": "10:00",
+        "source": "https://www.samsung.com/sec/ir/reports-disclosures/notices/",
+        "status": "confirmed",
+        "dateBasis": "KST",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "",
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 공식 전자공고 확인. 표시 시각은 한국시간 콘퍼런스콜 시작."
+      },
+      {
+        "id": "superweek-오라클-2026-10",
+        "originalDate": "2026-10-29",
+        "originalText": "오라클 인베스터 데이",
+        "type": "event",
+        "text": "오라클 인베스터 데이",
+        "time": "00:55",
+        "source": "https://investor.oracle.com/investor-news/news-details/2026/ORACLE-INVESTOR-DAY-MEETING-TO-BE-HELD-OCTOBER-28-2026/default.aspx",
+        "status": "confirmed",
+        "dateBasis": "KST",
+        "priority": "watch",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "",
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 공식 현지 10/28 10:55 America/Chicago(CDT) → 한국 10/29 00:55."
+      },
+      {
+        "id": "superweek-이비덴-2026-10",
+        "originalDate": "2026-10-29",
+        "originalText": "이비덴 실적발표",
+        "type": "earnings",
+        "text": "이비덴 실적발표",
+        "time": "",
+        "source": "",
+        "status": "unconfirmed",
+        "dateBasis": "unresolved",
+        "priority": "watch",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "사용자 제공 일정. 공식 발표일·시각 확인 필요",
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 원문 10/29. 일본시간과 한국시간 날짜는 동일하나 공식 발표일 재확인 필요."
       }
     ]
   },
@@ -1312,7 +1397,7 @@ const CALENDAR_DATA = [
         "type": "earnings",
         "text": "아마존 실적 콘퍼런스콜",
         "time": "06:00",
-        "note": "2026-10-22 공식 자료 대조. 원문: 2026-10-30 / 미국 아마존 실적 발표.\n현지 2026-10-29T17:00 (America/New_York) → 한국 2026-10-30 06:00. ",
+        "note": "2026-10-22 공식 자료 대조. 원문: 2026-10-30 / 미국 아마존 실적 발표.\n현지 2026-10-29T17:00 (America/New_York) → 한국 2026-10-30 06:00. \n2026-10-26 사용자 실적발표 슈퍼위크 요청과 일치. 기존 확인 일정 유지.",
         "source": "https://press.aboutamazon.com/2026/10/amazon-com-to-webcast-third-quarter-2026-financial-results-conference-call",
         "status": "confirmed",
         "originalDate": "2026-10-30",
@@ -1320,7 +1405,7 @@ const CALENDAR_DATA = [
         "dateBasis": "KST",
         "priority": "core",
         "archived": false,
-        "updatedAt": "2026-10-22",
+        "updatedAt": "2026-10-26",
         "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
         "reviewReason": ""
       },
@@ -1493,6 +1578,40 @@ const CALENDAR_DATA = [
         "updatedAt": "2026-10-22",
         "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
         "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
+      },
+      {
+        "id": "oct2026-image-23-earnings-04",
+        "type": "earnings",
+        "text": "인텔 실적발표·콘퍼런스콜",
+        "time": "06:00",
+        "note": "출처: 사용자 제공 2026년 10월 캘린더 이미지. 하단 표기: Bloomberg, 전자공시, 인포맥스, KB증권. 한국시간 기준·일정변경 가능. 이미지 전사이며 공식 일정과 별도 대조하지 않았습니다.\n원문 실적 기업명을 개별 일정으로 분리했습니다. 발표 시각은 원문에 없습니다.\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 공식 현지 10/29 장 마감 후 실적 공개, 콜 14:00 PDT → 한국 10/30 06:00. 기존 10/23 후보를 정정. 표시 시각은 콜 시작.",
+        "source": "https://www.intel.com/content/www/us/en/newsroom/news/corporate/intel-reports-third-quarter-2026-financial-results.html",
+        "status": "confirmed",
+        "originalDate": "2026-10-23",
+        "originalText": "미국 인텔 실적 발표",
+        "dateBasis": "KST",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": ""
+      },
+      {
+        "id": "superweek-샌디스크-2026-10",
+        "originalDate": "2026-10-30",
+        "originalText": "샌디스크 실적 콘퍼런스콜",
+        "type": "earnings",
+        "text": "샌디스크 실적 콘퍼런스콜",
+        "time": "05:30",
+        "source": "https://www.sandisk.com/company/newsroom/press-releases/2026/2026-09-29-sandisk-to-report-first-quarter-fiscal-year-2027-results-on-october-29-2026",
+        "status": "confirmed",
+        "dateBasis": "KST",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "",
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 공식 현지 10/29 13:30 PDT → 한국 10/30 05:30. 표시 시각은 콜 시작."
       }
     ]
   },
@@ -1532,29 +1651,29 @@ const CALENDAR_DATA = [
         "updatedAt": "2026-10-22",
         "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
         "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
+      },
+      {
+        "id": "superweek-앤트로픽-2026-11",
+        "originalDate": "2026-11-01",
+        "originalText": "앤트로픽 IPO (11월 중 예상·미확정)",
+        "type": "event",
+        "text": "앤트로픽 IPO (11월 중 예상·미확정)",
+        "time": "",
+        "source": "",
+        "status": "unconfirmed",
+        "dateBasis": "unresolved",
+        "priority": "watch",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "사용자 제공 일정. 공식 발표일·시각 확인 필요",
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 사용자 제공 11월 중 일정. 공식 상장 일정 확인 안 됨. 11/1은 월간 후보를 보관하는 표시용 날짜이며 실제 IPO 날짜가 아님."
       }
     ]
   },
   {
     "date": "2026-11-02",
     "events": [
-      {
-        "id": "nov2026-user-w1-02-earnings-03",
-        "type": "earnings",
-        "text": "미국 팔란티어 실적 발표",
-        "time": "",
-        "note": "출처: 사용자가 제공한 2026년 11월 첫째 주 요약. 공식 발표 일정과 별도 대조하지 않았습니다. 날짜는 사용자 원문 기준이며 발표 시각과 시간대는 별도 확인이 필요합니다.",
-        "source": "",
-        "status": "unconfirmed",
-        "originalDate": "2026-11-02",
-        "originalText": "미국 팔란티어 실적 발표",
-        "dateBasis": "unresolved",
-        "priority": "watch",
-        "archived": false,
-        "updatedAt": "2026-10-22",
-        "priorityReason": "보유·관심 종목 또는 관련 업종을 볼 때 선택하는 후보 일정",
-        "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
-      },
       {
         "id": "nov2026-user-w1-02-earnings-04",
         "type": "earnings",
@@ -1599,7 +1718,7 @@ const CALENDAR_DATA = [
         "type": "earnings",
         "text": "애플 실적 콘퍼런스콜",
         "time": "07:00",
-        "note": "2026-10-22 공식 자료 대조. 원문: 2026-11-02 / 미국 애플(Apple) 실적 발표.\n현지 2026-11-02T17:00 (America/New_York) → 한국 2026-11-03 07:00. 현지 11/2 17:00 ET, 서머타임 해제 후 KST +14시간. 10월의 중복 후보 기록은 보관 처리했습니다.",
+        "note": "2026-10-22 공식 자료 대조. 원문: 2026-11-02 / 미국 애플(Apple) 실적 발표.\n현지 2026-11-02T17:00 (America/New_York) → 한국 2026-11-03 07:00. 현지 11/2 17:00 ET, 서머타임 해제 후 KST +14시간. 10월의 중복 후보 기록은 보관 처리했습니다.\n2026-10-26 사용자 실적발표 슈퍼위크 요청과 일치. 기존 확인 일정 유지.",
         "source": "https://investor.apple.com/investor-relations/",
         "status": "confirmed",
         "originalDate": "2026-11-02",
@@ -1607,7 +1726,7 @@ const CALENDAR_DATA = [
         "dateBasis": "KST",
         "priority": "core",
         "archived": false,
-        "updatedAt": "2026-10-22",
+        "updatedAt": "2026-10-26",
         "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
         "reviewReason": ""
       },
@@ -1763,6 +1882,23 @@ const CALENDAR_DATA = [
         "updatedAt": "2026-10-22",
         "priorityReason": "보유·관심 종목 또는 관련 업종을 볼 때 선택하는 후보 일정",
         "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
+      },
+      {
+        "id": "nov2026-user-w1-02-earnings-03",
+        "type": "earnings",
+        "text": "팔란티어 실적발표·웹캐스트",
+        "time": "07:00",
+        "note": "출처: 사용자가 제공한 2026년 11월 첫째 주 요약. 공식 발표 일정과 별도 대조하지 않았습니다. 날짜는 사용자 원문 기준이며 발표 시각과 시간대는 별도 확인이 필요합니다.\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 공식 공지 확인. 현지 11/2 장 마감 후 실적 공개, 웹캐스트 17:00 EST → 한국 11/3 07:00. 표시 시각은 웹캐스트 시작.",
+        "source": "https://investors.palantir.com/news-details/2026/Palantir-Announces-Date-of-Third-Quarter-2026-Earnings-Release-and-Webcast/",
+        "status": "confirmed",
+        "originalDate": "2026-11-02",
+        "originalText": "미국 팔란티어 실적 발표",
+        "dateBasis": "KST",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": ""
       }
     ]
   },
@@ -1791,7 +1927,7 @@ const CALENDAR_DATA = [
         "type": "earnings",
         "text": "AMD 실적·콘퍼런스콜",
         "time": "07:00",
-        "note": "2026-10-22 공식 자료 대조. 원문: 2026-11-03 / 미국 AMD 실적 발표.\n현지 2026-11-03T17:00 (America/New_York) → 한국 2026-11-04 07:00. 실적은 현지 장 마감 후, 표시 시각은 콜 시작입니다.",
+        "note": "2026-10-22 공식 자료 대조. 원문: 2026-11-03 / 미국 AMD 실적 발표.\n현지 2026-11-03T17:00 (America/New_York) → 한국 2026-11-04 07:00. 실적은 현지 장 마감 후, 표시 시각은 콜 시작입니다.\n2026-10-26 사용자 실적발표 슈퍼위크 요청과 일치. 기존 확인 일정 유지.",
         "source": "https://ir.amd.com/news-events/press-releases/detail/1300/amd-to-report-fiscal-third-quarter-2026-financial-results",
         "status": "confirmed",
         "originalDate": "2026-11-03",
@@ -1799,7 +1935,7 @@ const CALENDAR_DATA = [
         "dateBasis": "KST",
         "priority": "core",
         "archived": false,
-        "updatedAt": "2026-10-22",
+        "updatedAt": "2026-10-26",
         "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
         "reviewReason": ""
       },
@@ -1869,23 +2005,6 @@ const CALENDAR_DATA = [
         "archived": false,
         "updatedAt": "2026-10-22",
         "priorityReason": "보유·관심 종목 또는 관련 업종을 볼 때 선택하는 후보 일정",
-        "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
-      },
-      {
-        "id": "nov2026-user-w1-04-earnings-04",
-        "type": "earnings",
-        "text": "미국 퀄컴 실적 발표",
-        "time": "",
-        "note": "출처: 사용자가 제공한 2026년 11월 첫째 주 요약. 공식 발표 일정과 별도 대조하지 않았습니다. 날짜는 사용자 원문 기준이며 발표 시각과 시간대는 별도 확인이 필요합니다.",
-        "source": "",
-        "status": "unconfirmed",
-        "originalDate": "2026-11-04",
-        "originalText": "미국 퀄컴 실적 발표",
-        "dateBasis": "unresolved",
-        "priority": "core",
-        "archived": false,
-        "updatedAt": "2026-10-22",
-        "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
         "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
       },
       {
@@ -2181,6 +2300,40 @@ const CALENDAR_DATA = [
         "updatedAt": "2026-10-22",
         "priorityReason": "시장 공통 지표·정책 또는 빅테크/대표 대형주",
         "reviewReason": "원문 날짜·기업명·시간대 또는 공식 발표일 확인 필요"
+      },
+      {
+        "id": "nov2026-user-w1-04-earnings-04",
+        "type": "earnings",
+        "text": "퀄컴 실적발표·콘퍼런스콜",
+        "time": "06:45",
+        "note": "출처: 사용자가 제공한 2026년 11월 첫째 주 요약. 공식 발표 일정과 별도 대조하지 않았습니다. 날짜는 사용자 원문 기준이며 발표 시각과 시간대는 별도 확인이 필요합니다.\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 공식 현지 11/4 장 마감 후 실적 공개, 콜 13:45 PST → 한국 11/5 06:45. 표시 시각은 콜 시작.",
+        "source": "https://investor.qualcomm.com/news-events/press-releases/news-details/2026/Qualcomm-Schedules-Fourth-Quarter-and-Fiscal-2026-Earnings-Release-and-Conference-Call/default.aspx",
+        "status": "confirmed",
+        "originalDate": "2026-11-04",
+        "originalText": "미국 퀄컴 실적 발표",
+        "dateBasis": "KST",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": ""
+      },
+      {
+        "id": "superweek-arm-2026-11",
+        "originalDate": "2026-11-05",
+        "originalText": "ARM 실적 웹캐스트",
+        "type": "earnings",
+        "text": "ARM 실적 웹캐스트",
+        "time": "07:00",
+        "source": "https://investors.arm.com/financials/quarterly-annual-results",
+        "status": "confirmed",
+        "dateBasis": "KST",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "",
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 공식 IR 검색 본문: 현지 11/4 14:00 PT(22:00 GMT) → 한국 11/5 07:00. 표시 시각은 웹캐스트 시작."
       }
     ]
   },
@@ -2721,6 +2874,28 @@ const CALENDAR_DATA = [
         "dateBasis": "local",
         "archived": false,
         "updatedAt": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "date": "2027-01-01",
+    "events": [
+      {
+        "id": "superweek-삼성전자-이사회-2027-01",
+        "originalDate": "2027-01-01",
+        "originalText": "삼성전자 이사회·차기 환원정책 발표 (1월 중 예상·미확정)",
+        "type": "event",
+        "text": "삼성전자 이사회·차기 환원정책 발표 (1월 중 예상·미확정)",
+        "time": "",
+        "source": "",
+        "status": "unconfirmed",
+        "dateBasis": "unresolved",
+        "priority": "core",
+        "archived": false,
+        "updatedAt": "2026-10-26",
+        "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
+        "reviewReason": "사용자 제공 일정. 공식 발표일·시각 확인 필요",
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 사용자 제공 2027년 1월 일정. 이사회 개최일과 차기 환원정책 발표 여부 미확정. 1/1은 월간 후보를 보관하는 표시용 날짜이며 실제 개최일이 아님."
       }
     ]
   }
