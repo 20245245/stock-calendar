@@ -29,7 +29,7 @@ function normalize(input) {
         status:e.status==='confirmed'?'confirmed':'unconfirmed', priority:e.priority==='core'?'core':'watch',
         localOnly:e.localOnly===true, archived:e.archived===true, dateBasis:['KST','local'].includes(e.dateBasis)?e.dateBasis:'unresolved',
         priorityReason:String(e.priorityReason||''), reviewReason:String(e.reviewReason||''),
-        originalDate:String(e.originalDate||''), originalText:String(e.originalText||''), updatedAt:String(e.updatedAt||'')
+        datePrecision:e.datePrecision==='month'?'month':'day', originalDate:String(e.originalDate||''), originalText:String(e.originalText||''), updatedAt:String(e.updatedAt||'')
       };
       if (!map.has(day.date)) map.set(day.date,[]); map.get(day.date).push(ev);
     }
@@ -99,10 +99,12 @@ function labels(e) {return `${e.localOnly?'내 변경 · ':''}${e.priority==='co
 function eventButton(e) {
   const b=el('button',undefined,'event'+(e.status!=='confirmed'?' unconfirmed':'')+(e.archived?' archived':''));
   b.style.setProperty('--color',TYPES[e.type][1]);
-  b.append(el('span',labels(e)+' · '+TYPES[e.type][0],'eventtype'));
-  if(e.time)b.append(el('span',e.time+' KST','eventtime'));
-  else if(e.dateBasis!=='KST')b.append(el('span',e.dateBasis==='local'?'현지 종일·거래일':'날짜·시간대 확인 필요','basis'));
-  b.append(el('div',e.text)); b.onclick=()=>openEditor(findDate(e.id),e);return b;
+  if(e.time)b.append(el('span',e.time,'eventtime'));
+  b.append(el('div',e.text));
+  if(e.status!=='confirmed')b.append(el('span','예상·확인 필요','eventtype'));
+  const hasNote=window.MarketJournal?.hasEvent(e.id)||!!privateState.notes[e.id];
+  if(hasNote)b.append(el('span','✎ 노트','note-marker'));
+  b.onclick=()=>window.MarketJournal?.openEvent(findDate(e.id),e);return b;
 }
 function findDate(id) {return data.find(d=>d.events.some(e=>e.id===id))?.date;}
 function render() {
@@ -128,13 +130,17 @@ function render() {
   const days=new Date(cursor.getFullYear(),cursor.getMonth()+1,0).getDate(),cells=Math.ceil((cursor.getDay()+days)/7)*7;
   for(let i=0;i<cells;i++) {
     const d=new Date(start);d.setDate(start.getDate()+i);
-    const iso=localDate(d),events=(data.find(x=>x.date===iso)?.events||[]).filter(matches);
+    const iso=localDate(d),events=(data.find(x=>x.date===iso)?.events||[]).filter(e=>e.datePrecision!=='month'&&matches(e));
     const cell=el('div',undefined,'day'+(d.getMonth()!==cursor.getMonth()?' other':'')+(iso===localDate(now)?' current':'')+(i%7===0?' sun':i%7===6?' sat':''));
     const head=el('div',undefined,'dayhead'),number=el('button',d.getDate(),'number');
     number.setAttribute('aria-label',`${iso} 일정 보기`);number.onclick=()=>showDay(iso);
     head.append(number,el('span',events.length?events.length+'건':'','daycount'));cell.append(head);
-    const list=el('div',undefined,'events');events.forEach(e=>list.append(eventButton(e)));cell.append(list);grid.append(cell);
+    const list=el('div',undefined,'events');events.slice(0,3).forEach(e=>list.append(eventButton(e)));
+    if(events.length>3){const more=el('button','+'+(events.length-3)+'건 더 보기','day-more');more.onclick=()=>showDay(iso);list.append(more);}
+    window.MarketJournal?.dayLinks(iso,list);cell.append(list);grid.append(cell);
   }
+  const undated=data.filter(d=>d.date.startsWith(prefix)).flatMap(d=>d.events).filter(e=>e.datePrecision==='month'&&matches(e));
+  $('undated').hidden=!undated.length;$('undatedEvents').replaceChildren(...undated.map(eventButton));
   $('result').textContent=`${VIEWS[view]} · 이번 달 ${monthEvents.filter(matches).length}건 표시 / 활성 ${monthEvents.filter(e=>!e.archived).length}건 · 날짜를 누르면 현재 보기의 상세 일정`;
   document.querySelector('.notice').hidden=!data.some(d=>d.events.some(e=>e.id.startsWith('demo-')));
 }
@@ -143,16 +149,12 @@ function showDay(date) {
   const all=data.find(d=>d.date===date)?.events||[],events=all.filter(matches);
   if(!events.length)$('dayEvents').append(el('p','현재 조건에 표시할 일정이 없습니다.'));
   if(all.length!==events.length){const b=el('button',`이날 전체 ${all.length}건 보기`,'alllink');b.onclick=()=>{view='all';filter='all';query='';$('search').value='';render();$('dayDialog').close();showDay(date);};$('dayEvents').append(b);}
+  const journal=el('button','✎ 이날의 생각 정리','primary');journal.onclick=()=>{ $('dayDialog').close();window.MarketJournal?.newNote(date); };$('dayEvents').append(journal);
   for(const e of events) {
     const box=el('article',undefined,'detail');
-    box.append(el('small',`${labels(e)} · ${TYPES[e.type][0]}${e.time?' · '+e.time+' KST':''}`),el('h3',e.text));
-    if(e.dateBasis!=='KST')box.append(el('p',e.dateBasis==='local'?'현지 종일·거래일 기준입니다.':'원문 임시 날짜입니다. 한국시간 기준 날짜 확인이 필요합니다.','review'));
-    if(e.reviewReason)box.append(el('p',e.reviewReason,'review'));
-    if(e.priorityReason)box.append(el('p','선별 이유: '+e.priorityReason));
-    if(e.note)box.append(el('p',e.note));
-    if(privateState.notes[e.id])box.append(el('p','내 메모: '+privateState.notes[e.id],'personalnote'));
-    if(e.source){const link=el('a','출처 확인 ↗');link.href=e.source;link.target='_blank';link.rel='noopener noreferrer';box.append(link);}
-    const edit=el('button','수정');edit.style.marginLeft='12px';edit.onclick=()=>openEditor(date,e);box.append(edit);$('dayEvents').append(box);
+    box.append(el('small',`${e.time?e.time+' KST · ':''}${e.status==='confirmed'?'확정':'예상·확인 필요'}`),el('h3',e.text));
+    const write=el('button','노트 열기');write.onclick=()=>{ $('dayDialog').close();window.MarketJournal?.openEvent(date,e); };box.append(write);
+    const edit=el('button','일정 수정','quiet');edit.onclick=()=>openEditor(date,e);box.append(edit);$('dayEvents').append(box);
   }
   $('dayDialog').showModal();
 }
@@ -160,7 +162,7 @@ function openEditor(date,event) {
   if($('dayDialog').open)$('dayDialog').close();editing=event?.id||null;$('eventForm').reset();
   $('editorTitle').textContent=event?'일정 수정':'일정 추가';$('date').value=date;$('type').value=event?.type||'earnings';
   for(const field of ['time','note','source','status','priority','dateBasis'])$(field).value=event?.[field]||({status:'unconfirmed',priority:'watch',dateBasis:'KST'}[field]||'');
-  $('personalNote').value=privateState.notes[event?.id]||'';$('restore').hidden=!event||!CalendarStore.flat(catalog).some(x=>x.event.id===event.id);$('archived').checked=event?.archived===true;$('title').value=event?.text||'';$('delete').hidden=!event;$('editor').showModal();
+  $('restore').hidden=!event||!CalendarStore.flat(catalog).some(x=>x.event.id===event.id);$('archived').checked=event?.archived===true;$('title').value=event?.text||'';$('delete').hidden=!event;$('editor').showModal();
 }
 $('eventForm').onsubmit=e=>{
   e.preventDefault();if(!dateValid($('date').value))return msg('유효한 날짜를 입력해 주세요.');
@@ -169,7 +171,7 @@ $('eventForm').onsubmit=e=>{
   const prior=data.flatMap(d=>d.events).find(e=>e.id===editing)||{};
   const event={...prior,id:editing||`event-${Date.now()}-${Math.random().toString(36).slice(2,8)}`,type:$('type').value,text:$('title').value.trim(),time:$('time').value,note:$('note').value,source:$('source').value,status:$('status').value,priority:$('priority').value,dateBasis:$('dateBasis').value,archived:$('archived').checked,updatedAt:localDate(new Date())};
   if(event.status==='confirmed')event.reviewReason='';
-  CalendarStore.save(catalog,privateState,$('date').value,event,$('personalNote').value);
+  CalendarStore.save(catalog,privateState,$('date').value,event,privateState.notes[editing]||'');
   cursor=new Date($('date').value+'T12:00:00');cursor.setDate(1);persist();$('editor').close();
   msg(event.priority==='core'&&event.status!=='confirmed'?'저장했습니다. 미확정 핵심 일정은 확인 필요 탭에 표시됩니다.':'이 기기의 개인 일정·메모를 저장했습니다.');
 };
@@ -195,7 +197,7 @@ $('file').onchange=async e=>{
     const incoming=Array.isArray(raw)?CalendarStore.migrate(normalize(raw),normalize(CALENDAR_PREVIOUS),catalog):CalendarStore.validate(raw,normalize);
     if(!confirm('개인 백업을 이 기기에 병합합니다. 공통 일정은 GitHub의 최신 자료를 유지하고, 같은 ID의 개인 변경·메모는 가져온 값으로 바꿉니다. 계속할까요?'))return;
     localStorage.setItem(KEY+'-before-import',JSON.stringify(privateState));
-    privateState=CalendarStore.mergePrivate(privateState,incoming);storageOK=true;persist();msg('개인 백업을 복원했습니다. 공통 일정은 최신 자료를 유지합니다.');
+    privateState=CalendarStore.mergePrivate(privateState,incoming);storageOK=true;persist();await window.MarketJournal?.importLegacy();msg('개인 백업을 복원했습니다. 공통 일정은 최신 자료를 유지합니다.');
   }catch(err){msg('복원 실패: '+err.message);}finally{e.target.value='';}
 };
 $('clearDemo').onclick=()=>{msg('이 버전에는 공개 예시 일정이 없습니다.');};

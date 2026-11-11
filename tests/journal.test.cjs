@@ -1,0 +1,26 @@
+'use strict';
+const assert=require('node:assert/strict');
+const S=require('../journal-store.js');
+const a=S.fresh('2026-11-11','event-1','시장 리뷰');a.body='원문\n\n내 생각';a.dirty=false;a.baseRevision=1;
+const local=S.changed(a,{body:'내 기기에서 수정'});
+const remote=S.changed(a,{body:'다른 기기에서 수정'});remote.dirty=false;remote.baseRevision=2;
+const merge=S.reconcile(local,remote);
+assert.equal(merge.note.body,'다른 기기에서 수정');assert.equal(merge.conflict.body,'내 기기에서 수정');assert.notEqual(merge.conflict.id,a.id);assert.equal(merge.conflict.baseRevision,0);assert(merge.conflict.dirty);
+assert.equal(S.reconcile(local,a).note.body,'내 기기에서 수정');
+assert.equal(S.reconcile({...local,body:remote.body},remote).note.dirty,false);
+const inFlight=S.changed(local,{body:'업로드 중에도 계속 작성'});
+const ack=S.acknowledged(inFlight,local,remote);assert.equal(ack.body,inFlight.body);assert.equal(ack.baseRevision,2);assert(ack.dirty);
+const deleted=S.changed(a,{deletedAt:new Date().toISOString()});assert(S.reconcile(deleted,remote).conflict.deletedAt);
+assert.equal(S.changed(deleted,{deletedAt:null}).body,a.body);
+assert.throws(()=>S.validate({...a,id:'__proto__'}));assert.throws(()=>S.validate({...a,body:'a'.repeat(1000001)}));
+assert.equal(S.validate({...a,body:'<img src=x onerror=alert(1)>\n\n한글'}).body,'<img src=x onerror=alert(1)>\n\n한글');
+const {Client}=require('../journal-cloud.js');
+global.localStorage={getItem:()=>null,setItem:()=>{},removeItem:()=>{}};
+(async()=>{
+ const c=new Client({url:'https://example.supabase.co',publishableKey:'public-key'});let payload;
+ c.request=async(path,options)=>{if(path==='/auth/v1/verify'){payload=JSON.parse(options.body);return {access_token:'fake',expires_in:3600};}return {id:'owner'};};
+ await c.verify('user@example.com','123456');assert.equal(payload.token,'123456');
+ await c.verify('user@example.com','https://example.supabase.co/auth/v1/verify?token=hash&type=magiclink');assert.deepEqual(payload,{token_hash:'hash',type:'magiclink'});
+ await assert.rejects(()=>c.verify('user@example.com','https://attacker.example/auth/v1/verify?token=hash&type=magiclink'));
+ console.log('PASS: conflicts preserve both drafts, concurrent upload edits survive, trash restore, note validation, OTP/link login domain validation');
+})().catch(e=>{console.error(e);process.exitCode=1;});

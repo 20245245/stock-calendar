@@ -1,5 +1,5 @@
 // Generated from data/calendar.json; do not edit by hand.
-const CALENDAR_CATALOG_REVISION = "2026-10-26.1";
+const CALENDAR_CATALOG_REVISION = "2026-11-11.1";
 const CALENDAR_DATA = [
   {
     "date": "2026-10-19",
@@ -1667,7 +1667,8 @@ const CALENDAR_DATA = [
         "updatedAt": "2026-10-26",
         "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
         "reviewReason": "사용자 제공 일정. 공식 발표일·시각 확인 필요",
-        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 사용자 제공 11월 중 일정. 공식 상장 일정 확인 안 됨. 11/1은 월간 후보를 보관하는 표시용 날짜이며 실제 IPO 날짜가 아님."
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 사용자 제공 11월 중 일정. 공식 상장 일정 확인 안 됨. 11/1은 월간 후보를 보관하는 표시용 날짜이며 실제 IPO 날짜가 아님.",
+        "datePrecision": "month"
       }
     ]
   },
@@ -2895,7 +2896,8 @@ const CALENDAR_DATA = [
         "updatedAt": "2026-10-26",
         "priorityReason": "사용자 지정 실적발표 슈퍼위크 및 후속 관심 일정",
         "reviewReason": "사용자 제공 일정. 공식 발표일·시각 확인 필요",
-        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 사용자 제공 2027년 1월 일정. 이사회 개최일과 차기 환원정책 발표 여부 미확정. 1/1은 월간 후보를 보관하는 표시용 날짜이며 실제 개최일이 아님."
+        "note": "\n2026-10-26 사용자 요청: 실적발표 슈퍼위크. 사용자 제공 2027년 1월 일정. 이사회 개최일과 차기 환원정책 발표 여부 미확정. 1/1은 월간 후보를 보관하는 표시용 날짜이며 실제 개최일이 아님.",
+        "datePrecision": "month"
       }
     ]
   }
